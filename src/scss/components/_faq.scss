@@ -1,0 +1,86 @@
+@use "../base/variables" as v;
+
+.faq {
+    background-color: v.$colors-brand-800;
+
+    &__intro {
+        text-align: center;
+        margin-block-end: 4.8rem;
+
+        @media (min-width: v.$bp-md) {
+            margin-block-end: 6.4rem;
+        }
+    }
+
+    &__title {
+        color: v.$colors-base-white;
+        margin-block-end: 1.6rem;
+    }
+
+    &__description {
+        color: v.$colors-brand-200;
+        font-size: 1.8rem;
+
+        @media (min-width: v.$bp-md) {
+            font-size: 2rem;
+        }
+    }
+
+    &__item {
+        padding-block-end: 2.4rem;
+        margin-block-end: 2.4rem;
+        border-bottom: 1px solid v.$colors-brand-400;
+
+        .icon {
+            &--minus {
+                display: none;
+            }
+
+            &--plus,
+            &--minus {
+                flex-shrink: 0;
+            }
+        }
+
+        &--open .icon {
+            &--plus {
+                display: none;
+            }
+            &--minus {
+                display: block;
+            }
+        }
+
+        &--open .faq__answer {
+            max-height: 500px;
+            opacity: 1;
+            padding-block-start: 0.8rem;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &__question-button {
+        display: flex;
+        justify-content: space-between;
+        gap: 0 2.6rem;
+        text-align: left;
+        width: 100%;
+        color: v.$colors-base-white;
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+
+    &__answer {
+        color: v.$colors-brand-200;
+        font-size: 1.6rem;
+        max-height: 0;
+        padding-block-start: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out,
+            opacity 0.3s ease-in-out;
+        opacity: 0;
+    }
+}
