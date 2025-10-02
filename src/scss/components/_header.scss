@@ -5,12 +5,10 @@
         position: relative;
         display: flex;
         align-items: center;
-        padding-inline: v.$container-padding-mobile;
         padding-block: 2.4rem;
         gap: 4rem;
 
         @media (min-width: v.$bp-md) {
-            padding-inline: v.$container-padding-desktop;
             padding-block: 0;
         }
     }

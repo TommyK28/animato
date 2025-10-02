@@ -9,7 +9,7 @@
     </head>
     <body>
         <header class="header">
-            <div class="header__wrapper">
+            <div class="header__wrapper container container_layout">
                 <h1 class="header__logo">
                     <a href="/">
                         <img
@@ -367,6 +367,128 @@
                 </button>
             </div>
         </header>
+        <main class="main">
+            <section class="intro">
+                <div class="container container_layout">
+                    <div class="intro__grid">
+                        <div class="intro__content">
+                            <p class="intro__eyebrow">POWERFUL PRODUCT</p>
+                            <h2 class="intro__title">
+                                People who care about your growth
+                            </h2>
+                            <p class="intro__lead">
+                                Powerful, self-serve product and growth
+                                analytics to help you convert…
+                            </p>
+                            <button
+                                href="#"
+                                class="button button--primary intro__cta"
+                            >
+                                Get started
+                                <svg
+                                    class="icon"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    fill="none"
+                                    viewBox="0 0 20 20"
+                                    aria-hidden="true"
+                                    focusable="false"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="1.667"
+                                        d="M14.788 13.333a5.857 5.857 0 0 0 .911-4.583M5.212 13.333a5.833 5.833 0 0 1 5.819-9.076M13.75 6.25 10 10m8.333 0a8.333 8.333 0 1 1-16.666 0 8.333 8.333 0 0 1 16.666 0m-7.5 0a.833.833 0 1 1-1.666 0 .833.833 0 0 1 1.666 0"
+                                    />
+
+                                    <defs>
+                                        <clipPath id="a">
+                                            <path
+                                                fill="currentColor"
+                                                d="M0 0h20v20H0z"
+                                            />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <picture class="intro__media">
+                            <source
+                                srcset="/images/hero.png"
+                                media="(min-width: 481px)"
+                                width="720"
+                                height="720"
+                            />
+                            <img
+                                class="intro__image"
+                                src="/images/hero-mob.png"
+                                alt=""
+                                width="375"
+                                height="280"
+                                decoding="async"
+                            />
+                        </picture>
+                    </div>
+
+                    <div class="intro__grid">
+                        <picture class="intro__media intro__media--left">
+                            <source
+                                srcset="/images/bg.png"
+                                media="(min-width: 481px)"
+                                width="720"
+                                height="720"
+                            />
+                            <img
+                                class="intro__image"
+                                src="/images/bg-mob.png"
+                                alt=""
+                                width="375"
+                                height="280"
+                                decoding="async"
+                            />
+                        </picture>
+
+                        <div class="intro__content">
+                            <p class="intro__eyebrow">PEOPLE</p>
+                            <h2 class="intro__title">
+                                People who care about your growth
+                            </h2>
+                            <p class="intro__lead">
+                                Powerful, self-serve product and growth
+                                analytics…
+                            </p>
+                            <button
+                                href="#"
+                                class="button button--primary intro__cta"
+                            >
+                                <svg
+                                    class="icon"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    fill="none"
+                                    viewBox="0 0 20 20"
+                                    aria-hidden="true"
+                                    focusable="false"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="1.667"
+                                        d="M3.333 10h13.334m0 0-5-5m5 5-5 5"
+                                    />
+                                </svg>
+                                Get started
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
         <script type="module" src="/js/main.js"></script>
     </body>
 </html>
