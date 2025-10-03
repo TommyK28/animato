@@ -9,7 +9,7 @@ const body = document.body;
 const mq = matchMedia("(min-width: 960px)");
 const header = document.querySelector(".header");
 const focusableElements =
-    'h1,a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
+    'a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
 
 let abortController;
 
@@ -77,72 +77,66 @@ toggle.addEventListener("click", () =>
             triggerSelector,
             panelSelector,
             openClass,
-            closeSiblings,
+            closeSiblings = false,
             onlyWhen,
         } = options;
+
         const root =
             typeof container === "string"
                 ? document.querySelector(container)
                 : container;
         if (!root) return;
 
-        const genId = (() => {
-            let i = 0;
-            return (prefix = "acc") =>
-                `${prefix}-${Math.random().toString(36).slice(2, 7)}-${i++}`;
-        })();
+        const genId = () =>
+            `acc-${Math.random().toString(36).slice(2, 7)}-${Date.now()}`;
 
-        function setAria(trigger, panel, expanded) {
-            if (!panel.id) panel.id = genId("panel");
+        const setAria = (trigger, panel, isOpen) => {
+            if (!panel.id) panel.id = genId();
             trigger.setAttribute("aria-controls", panel.id);
-            trigger.setAttribute("aria-expanded", expanded ? "true" : "false");
-            panel.setAttribute("aria-hidden", expanded ? "false" : "true");
-        }
+            trigger.setAttribute("aria-expanded", String(isOpen));
+            panel.setAttribute("aria-hidden", String(!isOpen));
+        };
 
         root.addEventListener("click", (e) => {
             const trigger = e.target.closest(triggerSelector);
-            if (!trigger || !root.contains(trigger)) return;
-
-            if (onlyWhen && !onlyWhen()) return;
-
-            if (trigger.tagName === "A" || trigger.tagName === "BUTTON") {
-                e.preventDefault();
+            if (
+                !trigger ||
+                !root.contains(trigger) ||
+                (onlyWhen && !onlyWhen())
+            ) {
+                return;
             }
 
-            const item = trigger.closest(itemSelector);
-            if (!item) return;
+            e.preventDefault();
 
-            const panel = item.querySelector(panelSelector);
-            if (!panel) return;
+            const item = trigger.closest(itemSelector);
+            const panel = item?.querySelector(panelSelector);
+
+            if (!item || !panel) {
+                return;
+            }
 
             const isOpen = item.classList.contains(openClass);
 
-            if (isOpen) {
-                item.classList.remove(openClass);
-                setAria(trigger, panel, false);
-            } else {
-                if (closeSiblings) {
-                    item.parentElement
-                        .querySelectorAll(`${itemSelector}.${openClass}`)
-                        .forEach((sibling) => {
-                            if (sibling !== item) {
-                                sibling.classList.remove(openClass);
-                                const siblingTrigger =
-                                    sibling.querySelector(triggerSelector);
-                                const siblingPanel =
-                                    sibling.querySelector(panelSelector);
-                                if (siblingTrigger && siblingPanel) {
-                                    setAria(
-                                        siblingTrigger,
-                                        siblingPanel,
-                                        false
-                                    );
-                                }
-                            }
-                        });
-                }
-                item.classList.add(openClass);
-                setAria(trigger, panel, true);
+            item.classList.toggle(openClass, !isOpen);
+            setAria(trigger, panel, !isOpen);
+
+            if (closeSiblings && !isOpen) {
+                root.querySelectorAll(`.${openClass}`).forEach((sibling) => {
+                    if (
+                        sibling !== item &&
+                        sibling.closest(itemSelector) === sibling
+                    ) {
+                        const siblingTrigger =
+                            sibling.querySelector(triggerSelector);
+                        const siblingPanel =
+                            sibling.querySelector(panelSelector);
+                        if (siblingTrigger && siblingPanel) {
+                            sibling.classList.remove(openClass);
+                            setAria(siblingTrigger, siblingPanel, false);
+                        }
+                    }
+                });
             }
         });
 
@@ -155,9 +149,7 @@ toggle.addEventListener("click", () =>
         });
     }
 
-    // Calling accordion functions
-    // 1) Mobile menu (submenu) – only on mobile devices
-    const mql = window.matchMedia("(max-width: 767px)");
+    const mql = window.matchMedia("(max-width: 960px)");
     initAccordion({
         container: "#header-nav",
         itemSelector: ".header__item--has-submenu",
@@ -168,13 +160,12 @@ toggle.addEventListener("click", () =>
         onlyWhen: () => mql.matches,
     });
 
-    // 2)  Accordion for FAQs – multiple open at once
     initAccordion({
         container: ".faq__list",
         itemSelector: ".faq__item",
         triggerSelector: ".faq__question-button",
         panelSelector: ":scope > .faq__answer",
         openClass: "faq__item--open",
-        closeSiblings: false,
+        closeSiblings: flase,
     });
 })();
