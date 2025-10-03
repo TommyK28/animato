@@ -46,11 +46,6 @@
     }
 
     &__action {
-        &:first-child {
-            color: v.$colors-gray-cool-700;
-            border: 1px solid v.$colors-gray-cool-300;
-        }
-
         &:last-child {
             order: -1;
         }

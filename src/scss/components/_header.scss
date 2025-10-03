@@ -264,7 +264,6 @@
         &--log-in {
             align-self: center;
             color: v.$colors-gray-cool-700;
-            border: 1px solid v.$colors-gray-cool-300;
             box-shadow: none;
 
             @media (min-width: v.$bp-md) {

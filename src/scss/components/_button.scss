@@ -32,4 +32,10 @@ button {
     background: v.$colors-base-white;
     color: v.$colors-gray-cool-700;
     border: 1px solid v.$colors-gray-cool-300;
+
+    &:hover,
+    &:focus {
+        border-color: v.$colors-gray-cool-600;
+        opacity: 0.8;
+    }
 }
