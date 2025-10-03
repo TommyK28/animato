@@ -162,6 +162,18 @@
         @media (min-width: v.$bp-md) {
             font-size: 3rem;
         }
+
+        .icon {
+            transition: v.$transition__default ease-in-out;
+        }
+
+        @media (min-width: v.$bp-md) {
+            &:hover {
+                .icon {
+                    scale: 1.2;
+                }
+            }
+        }
     }
 
     &__image {

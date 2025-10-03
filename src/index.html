@@ -3,6 +3,16 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Alpine core -->
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+        ></script>
+        <!-- Collapse plugin -->
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+        ></script>
         <title>Animato project</title>
 
         <link rel="stylesheet" href="/css/main.css" />
@@ -500,7 +510,7 @@
                     </div>
 
                     <div class="faq__list">
-                        <div class="faq__item">
+                        <article class="faq__item">
                             <button
                                 class="faq__question-button"
                                 type="button"
@@ -548,8 +558,8 @@
                                 personalized 30-minute onboarding call to get
                                 you up and running as soon as possible.
                             </p>
-                        </div>
-                        <div class="faq__item">
+                        </article>
+                        <article class="faq__item">
                             <button
                                 class="faq__question-button"
                                 type="button"
@@ -595,8 +605,8 @@
                                 personalized 30-minute onboarding call to get
                                 you up and running as soon as possible.
                             </p>
-                        </div>
-                        <div class="faq__item">
+                        </article>
+                        <article class="faq__item">
                             <button
                                 class="faq__question-button"
                                 type="button"
@@ -642,8 +652,8 @@
                                 personalized 30-minute onboarding call to get
                                 you up and running as soon as possible.
                             </p>
-                        </div>
-                        <div class="faq__item">
+                        </article>
+                        <article class="faq__item">
                             <button
                                 class="faq__question-button"
                                 type="button"
@@ -689,8 +699,8 @@
                                 personalized 30-minute onboarding call to get
                                 you up and running as soon as possible.
                             </p>
-                        </div>
-                        <div class="faq__item">
+                        </article>
+                        <article class="faq__item">
                             <button
                                 class="faq__question-button"
                                 type="button"
@@ -736,8 +746,8 @@
                                 personalized 30-minute onboarding call to get
                                 you up and running as soon as possible.
                             </p>
-                        </div>
-                        <div class="faq__item">
+                        </article>
+                        <article class="faq__item">
                             <button
                                 class="faq__question-button"
                                 type="button"
@@ -783,7 +793,338 @@
                                 personalized 30-minute onboarding call to get
                                 you up and running as soon as possible.
                             </p>
-                        </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq faq--alpine" x-data>
+                <div class="container container_layout container_content">
+                    <div class="faq__intro">
+                        <h2 class="faq__title">FAQ (Alpine verze)</h2>
+                    </div>
+
+                    <div class="faq__list">
+                        <article
+                            class="faq__item"
+                            x-data="{ open: false }"
+                            x-id="['panel','control']"
+                            :class="{ 'faq__item--open': open }"
+                        >
+                            <button
+                                class="faq__question-button"
+                                @click="open = !open"
+                                :aria-expanded="open"
+                                :aria-controls="$id('panel')"
+                                :id="$id('control')"
+                            >
+                                Is there a free trial available?
+                                <svg
+                                    class="icon icon--plus"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    fill="none"
+                                    viewBox="0 0 22 22"
+                                >
+                                    <path
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M11 7v8m-4-4h8m6 0c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"
+                                    />
+                                </svg>
+
+                                <svg
+                                    class="icon icon--minus"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    fill="none"
+                                    viewBox="0 0 22 22"
+                                >
+                                    <path
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M7 11h8m6 0c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"
+                                    />
+                                </svg>
+                            </button>
+
+                            <p
+                                class="faq__answer"
+                                x-show="open"
+                                x-transition
+                                x-collapse
+                                role="region"
+                                :id="$id('panel')"
+                                :aria-labelledby="$id('control')"
+                            >
+                                Yes, you can try us for free for 30 days. If you
+                                want, we’ll provide you with a free,
+                                personalized 30-minute onboarding call to get
+                                you up and running as soon as possible.
+                            </p>
+                        </article>
+                        <article
+                            class="faq__item"
+                            x-data="{ open: false }"
+                            x-id="['panel','control']"
+                            :class="{ 'faq__item--open': open }"
+                        >
+                            <button
+                                class="faq__question-button"
+                                @click="open = !open"
+                                :aria-expanded="open"
+                                :aria-controls="$id('panel')"
+                                :id="$id('control')"
+                            >
+                                Can I change my plan later?
+                                <svg
+                                    class="icon icon--plus"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    fill="none"
+                                    viewBox="0 0 22 22"
+                                >
+                                    <path
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M11 7v8m-4-4h8m6 0c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"
+                                    />
+                                </svg>
+
+                                <svg
+                                    class="icon icon--minus"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    fill="none"
+                                    viewBox="0 0 22 22"
+                                >
+                                    <path
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M7 11h8m6 0c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"
+                                    />
+                                </svg>
+                            </button>
+
+                            <p
+                                class="faq__answer"
+                                x-show="open"
+                                x-transition
+                                x-collapse
+                                role="region"
+                                :id="$id('panel')"
+                                :aria-labelledby="$id('control')"
+                            >
+                                Yes, you can try us for free for 30 days. If you
+                                want, we’ll provide you with a free,
+                                personalized 30-minute onboarding call to get
+                                you up and running as soon as possible.
+                            </p>
+                        </article>
+                        <article
+                            class="faq__item"
+                            x-data="{ open: false }"
+                            x-id="['panel','control']"
+                            :class="{ 'faq__item--open': open }"
+                        >
+                            <button
+                                class="faq__question-button"
+                                @click="open = !open"
+                                :aria-expanded="open"
+                                :aria-controls="$id('panel')"
+                                :id="$id('control')"
+                            >
+                                What is your cancellation policy?
+                                <svg
+                                    class="icon icon--plus"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    fill="none"
+                                    viewBox="0 0 22 22"
+                                >
+                                    <path
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M11 7v8m-4-4h8m6 0c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"
+                                    />
+                                </svg>
+
+                                <svg
+                                    class="icon icon--minus"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    fill="none"
+                                    viewBox="0 0 22 22"
+                                >
+                                    <path
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M7 11h8m6 0c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"
+                                    />
+                                </svg>
+                            </button>
+
+                            <p
+                                class="faq__answer"
+                                x-show="open"
+                                x-transition
+                                x-collapse
+                                role="region"
+                                :id="$id('panel')"
+                                :aria-labelledby="$id('control')"
+                            >
+                                Yes, you can try us for free for 30 days. If you
+                                want, we’ll provide you with a free,
+                                personalized 30-minute onboarding call to get
+                                you up and running as soon as possible.
+                            </p>
+                        </article>
+                        <article
+                            class="faq__item"
+                            x-data="{ open: false }"
+                            x-id="['panel','control']"
+                            :class="{ 'faq__item--open': open }"
+                        >
+                            <button
+                                class="faq__question-button"
+                                @click="open = !open"
+                                :aria-expanded="open"
+                                :aria-controls="$id('panel')"
+                                :id="$id('control')"
+                            >
+                                Can other info be added to an invoice?
+                                <svg
+                                    class="icon icon--plus"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    fill="none"
+                                    viewBox="0 0 22 22"
+                                >
+                                    <path
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M11 7v8m-4-4h8m6 0c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"
+                                    />
+                                </svg>
+
+                                <svg
+                                    class="icon icon--minus"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    fill="none"
+                                    viewBox="0 0 22 22"
+                                >
+                                    <path
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M7 11h8m6 0c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"
+                                    />
+                                </svg>
+                            </button>
+
+                            <p
+                                class="faq__answer"
+                                x-show="open"
+                                x-transition
+                                x-collapse
+                                role="region"
+                                :id="$id('panel')"
+                                :aria-labelledby="$id('control')"
+                            >
+                                Yes, you can try us for free for 30 days. If you
+                                want, we’ll provide you with a free,
+                                personalized 30-minute onboarding call to get
+                                you up and running as soon as possible.
+                            </p>
+                        </article>
+                        <article
+                            class="faq__item"
+                            x-data="{ open: false }"
+                            x-id="['panel','control']"
+                            :class="{ 'faq__item--open': open }"
+                        >
+                            <button
+                                class="faq__question-button"
+                                @click="open = !open"
+                                :aria-expanded="open"
+                                :aria-controls="$id('panel')"
+                                :id="$id('control')"
+                            >
+                                How does billing work?
+                                <svg
+                                    class="icon icon--plus"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    fill="none"
+                                    viewBox="0 0 22 22"
+                                >
+                                    <path
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M11 7v8m-4-4h8m6 0c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"
+                                    />
+                                </svg>
+
+                                <svg
+                                    class="icon icon--minus"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    fill="none"
+                                    viewBox="0 0 22 22"
+                                >
+                                    <path
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M7 11h8m6 0c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"
+                                    />
+                                </svg>
+                            </button>
+
+                            <p
+                                class="faq__answer"
+                                x-show="open"
+                                x-transition
+                                x-collapse
+                                role="region"
+                                :id="$id('panel')"
+                                :aria-labelledby="$id('control')"
+                            >
+                                Yes, you can try us for free for 30 days. If you
+                                want, we’ll provide you with a free,
+                                personalized 30-minute onboarding call to get
+                                you up and running as soon as possible.
+                            </p>
+                        </article>
                     </div>
                 </div>
             </section>
