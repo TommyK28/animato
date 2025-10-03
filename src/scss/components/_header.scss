@@ -16,6 +16,14 @@
     &__logo {
         flex-shrink: 0;
 
+        a {
+            display: inline-block;
+
+            &:focus {
+                outline: 2px solid v.$colors-gray-cool-600;
+            }
+        }
+
         img {
             width: auto;
         }
@@ -93,7 +101,9 @@
     }
 
     &__item--has-submenu {
-        &:hover {
+        &:hover,
+        &:focus,
+        &:focus-within {
             .header__submenu {
                 @media (min-width: v.$bp-md) {
                     display: flex;
@@ -183,6 +193,10 @@
         padding: 1.6rem;
         border-radius: v.$radius-md;
         transition: background v.$transition__default;
+
+        &:hover {
+            opacity: 0.8;
+        }
 
         .header__link-icon-wrapper {
             display: flex;
